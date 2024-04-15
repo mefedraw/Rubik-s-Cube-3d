@@ -668,6 +668,31 @@ void display_cube(vector<vector<vector<cubeEdge> > > &cubik3d_f) {
     display_bs(cubik3d_f);
 }
 
+void ShowWorld(vector<vector<vector<cubeEdge> > > &cubik3d_f) {
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glVertexPointer(3,GL_FLOAT, 0, &vert);
+    for (int i = -10; i < 10; i++)
+        for (int j = -10; j < 10; j++) {
+            glPushMatrix();
+            if ((i + j) % 2 == 0) {
+                glColor3f(0.5, 0.5, 0.5);
+            } else {
+                glColor3f(0, 0, 0.4);
+            }
+            glTranslatef(i * 2, j * 2, 0);
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+            glPopMatrix();
+        }
+
+    glVertexPointer(3, GL_FLOAT, 0, squareVertices);
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glDrawArrays(GL_QUADS, 0, 4);
+
+    display_cube(cubik3d_f);
+
+    glDisableClientState(GL_VERTEX_ARRAY);
+}
+
 auto initiate_move(int moveNum, vector<vector<vector<cubeEdge> > > &cubik3d_f,
                    stack<string> &rememberMoves) -> void {
     if (moveNum == 1) {
@@ -693,7 +718,7 @@ auto initiate_move(int moveNum, vector<vector<vector<cubeEdge> > > &cubik3d_f,
 
 
 void shuffle(vector<vector<vector<cubeEdge> > > &cubik3d_f, stack<string> &rememberMoves) {
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 15; i++) {
         int move = (rand() % 6) + 1;
         int times = (rand() % 3);
         for (int j = 0; j < times; j++) {
@@ -702,7 +727,7 @@ void shuffle(vector<vector<vector<cubeEdge> > > &cubik3d_f, stack<string> &remem
     }
 }
 
-void fix_cube(vector<vector<vector<cubeEdge> > > &cubik3d_f, stack<string> &rememberMoves) {
+void solve(vector<vector<vector<cubeEdge> > > &cubik3d_f, stack<string> &rememberMoves) {
     while (!rememberMoves.empty()) {
         string curMove = rememberMoves.top();
 
@@ -710,41 +735,30 @@ void fix_cube(vector<vector<vector<cubeEdge> > > &cubik3d_f, stack<string> &reme
             for (int i = 0; i < 3; i++) {
                 cubik3d_ru_rotate(cubik3d_f);
             }
-            ShowWorld(cubik3d_f);
-            std::this_thread::sleep_for(std::chrono::milliseconds(10));
         } else if (curMove == "lu") {
             for (int i = 0; i < 3; i++) {
                 cubik3d_lu_rotate(cubik3d_f);
             }
-            ShowWorld(cubik3d_f);
-            std::this_thread::sleep_for(std::chrono::milliseconds(10));
         } else if (curMove == "fs") {
             for (int i = 0; i < 3; i++) {
                 cubik3d_fs_rotate(cubik3d_f);
             }
-            ShowWorld(cubik3d_f);
-            std::this_thread::sleep_for(std::chrono::milliseconds(10));
         } else if (curMove == "bs") {
             for (int i = 0; i < 3; i++) {
                 cubik3d_bs_rotate(cubik3d_f);
             }
-            ShowWorld(cubik3d_f);
-            std::this_thread::sleep_for(std::chrono::milliseconds(10));
         } else if (curMove == "ul") {
             for (int i = 0; i < 3; i++) {
                 cubik3d_ul_rotate(cubik3d_f);
             }
-            ShowWorld(cubik3d_f);
-            std::this_thread::sleep_for(std::chrono::milliseconds(10));
         } else {
             for (int i = 0; i < 3; i++) {
                 cubik3d_dl_rotate(cubik3d_f);
             }
-            ShowWorld(cubik3d_f);
-            std::this_thread::sleep_for(std::chrono::milliseconds(10));
         }
         rememberMoves.pop();
-        std::this_thread::sleep_for(std::chrono::milliseconds(300));
+        ShowWorld(cubik3d_f);
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
 }
 
