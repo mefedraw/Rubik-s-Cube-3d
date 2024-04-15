@@ -341,7 +341,7 @@ void cubik3d_bs_rotate(vector<vector<vector<cubeEdge> > > &cubik3d_f) {
 unordered_map<int, pair<float, pair<float, float> > > mapColors;
 
 void init_mapColors() {
-    mapColors[1] = {1, {0, 0}};
+    mapColors[1] = {1, {0.5, 0}};
     mapColors[2] = {0, {1, 0}};
     mapColors[3] = {0, {0, 1}};
     mapColors[4] = {1, {0.5, 1}};
@@ -727,38 +727,48 @@ void shuffle(vector<vector<vector<cubeEdge> > > &cubik3d_f, stack<string> &remem
     }
 }
 
-void solve(vector<vector<vector<cubeEdge> > > &cubik3d_f, stack<string> &rememberMoves) {
-    while (!rememberMoves.empty()) {
+void solve(vector<vector<vector<cubeEdge> > > &cubik3d_f, stack<string> &rememberMoves, int cnt) {
+    while (cnt > 0 and !rememberMoves.empty()) {
         string curMove = rememberMoves.top();
 
         if (curMove == "ru") {
             for (int i = 0; i < 3; i++) {
                 cubik3d_ru_rotate(cubik3d_f);
+                cnt--;
+                //std::this_thread::sleep_for(std::chrono::milliseconds(50));
             }
         } else if (curMove == "lu") {
             for (int i = 0; i < 3; i++) {
                 cubik3d_lu_rotate(cubik3d_f);
+                cnt--;
+                //std::this_thread::sleep_for(std::chrono::milliseconds(50));
             }
         } else if (curMove == "fs") {
             for (int i = 0; i < 3; i++) {
                 cubik3d_fs_rotate(cubik3d_f);
+                cnt--;
+                //std::this_thread::sleep_for(std::chrono::milliseconds(50));
             }
         } else if (curMove == "bs") {
             for (int i = 0; i < 3; i++) {
                 cubik3d_bs_rotate(cubik3d_f);
+                cnt--;
+                //std::this_thread::sleep_for(std::chrono::milliseconds(50));
             }
         } else if (curMove == "ul") {
             for (int i = 0; i < 3; i++) {
                 cubik3d_ul_rotate(cubik3d_f);
+                cnt--;
+                //std::this_thread::sleep_for(std::chrono::milliseconds(50));
             }
         } else {
             for (int i = 0; i < 3; i++) {
                 cubik3d_dl_rotate(cubik3d_f);
+                cnt--;
+                // std::this_thread::sleep_for(std::chrono::milliseconds(50));
             }
         }
         rememberMoves.pop();
-        ShowWorld(cubik3d_f);
-        std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
 }
 
