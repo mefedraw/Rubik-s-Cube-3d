@@ -78,8 +78,8 @@ void MoveCamera(vector<vector<vector<cubeEdge> > > &cubik3d_f) {
         shuffle(cubik3d_f, rememberMoves);
         lastPressTime_7_button = time(0);
     }
-    if (GetKeyState('8') < 0 && difftime(time(0), lastPressTime_8_button) >= 2) {
-        solve(cubik3d_f, rememberMoves);
+    if (GetKeyState('8') < 0 && difftime(time(0), lastPressTime_8_button) >= 0.5) {
+        solve(cubik3d_f, rememberMoves,2);
         lastPressTime_8_button = time(0);
     }
     if (GetKeyState('9') < 0 && difftime(time(0), lastPressTime_9_button) >= 2) {
