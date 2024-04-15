@@ -20,7 +20,6 @@
   target_include_directories(${PROJECT_NAME} PUBLIC ${GLEW_INCLUDES})
   ```
 
-***WARNING: first version only work on Windows***
 
 
 ***Keyboard bind's:***
