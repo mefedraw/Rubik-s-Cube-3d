@@ -45,7 +45,8 @@
 
   "8" - solve Rubic's Cube
 
-  ![image](https://github.com/mefedraw/Rubik-s-Cube-3d/assets/144416623/9a316e3c-1003-4a52-9037-759a80afb609)
+  ![image](https://github.com/mefedraw/Rubik-s-Cube-3d/assets/144416623/53e6cb05-93af-43bf-a7b1-4ba04b3d6e62)
+
 
   
 
