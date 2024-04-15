@@ -268,7 +268,7 @@ void drawCenters() {
     drawSquare(11, 11, 3.5, 1, 1, 1, 1);
     drawSquare(11, 11, 6.5, 1, 1, 1, 0);
 
-    drawStandingSquare2(9.5, 11, 5, 1, 1, 0, 0);
+    drawStandingSquare2(9.5, 11, 5, 1, 1, 0.5, 0);
     drawStandingSquare2(12.5, 11, 5, 1, 1, 0.5, 1);
 
     drawStandingSquare1(11, 12.5, 5, 1, 0, 0, 1);
