@@ -1,4 +1,4 @@
-![image](https://github.com/mefedraw/Rubik-s-Cube-3d/assets/144416623/cc397346-ad87-4c37-ac23-7c8928f71365)***How to install Open-gl:***
+***How to install Open-gl:***
 
   *download zip and extract files to your project folder*
   https://disk.yandex.ru/d/yRQBSVIuqJSFfQ
