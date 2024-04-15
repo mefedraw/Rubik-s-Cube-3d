@@ -42,7 +42,7 @@
 
   "7" - shuffle
 
-  "8" - solve Rubic's Cube
+  "8" - solve Rubic's Cube (press and hold)
 
   ![image](https://github.com/mefedraw/Rubik-s-Cube-3d/assets/144416623/53e6cb05-93af-43bf-a7b1-4ba04b3d6e62)
 
